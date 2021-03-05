@@ -1,15 +1,17 @@
 package com.pandecode.manutdprofile.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.flaviofaria.kenburnsview.KenBurnsView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.pandecode.manutdprofile.R
 import com.pandecode.manutdprofile.model.Player
 
@@ -17,6 +19,7 @@ class DetailFragment : Fragment() {
     private lateinit var imgBackdrop: KenBurnsView
     private lateinit var imgPosition: ImageView
     private lateinit var imgCountry: ImageView
+    private lateinit var fabFavorite: FloatingActionButton
 
     private lateinit var tvPosition: TextView
     private lateinit var tvCountry: TextView
@@ -39,8 +42,17 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val selectedPlayer = args.selectedPlayer
+
         setupUI()
-        populateUI(args.selectedPlayer)
+        populateUI(selectedPlayer)
+        favoriteState(selectedPlayer.isFavorite)
+
+        fabFavorite.setOnClickListener {
+            selectedPlayer.isFavorite = !selectedPlayer.isFavorite
+            favoriteState(selectedPlayer.isFavorite)
+        }
+
     }
 
     private fun populateUI(selectedPlayer: Player) {
@@ -79,6 +91,18 @@ class DetailFragment : Fragment() {
         tvJoinDate = view?.findViewById(R.id.tv_player_joindate_detail)!!
         tvBirthDate = view?.findViewById(R.id.tv_player_birthdate_detail)!!
         tvBiography = view?.findViewById(R.id.tv_player_biography_detail)!!
+
+        fabFavorite = view?.findViewById(R.id.fab_favorite_detail)!!
     }
 
+    private fun favoriteState(state: Boolean) {
+        context?.let { it ->
+            if (state) {
+                fabFavorite.setImageDrawable(ContextCompat.getDrawable(it, R.drawable.ic_favorite_on))
+            }else {
+                fabFavorite.setImageDrawable(ContextCompat.getDrawable(it, R.drawable.ic_favorite_off))
+            }
+        }
+
+    }
 }

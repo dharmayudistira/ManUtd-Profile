@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.pandecode.manutdprofile.R
 import com.pandecode.manutdprofile.adapter.GridPlayerAdapter
 import com.pandecode.manutdprofile.adapter.ListPlayerAdapter
+import com.pandecode.manutdprofile.model.Player
 import com.pandecode.manutdprofile.util.PlayerGenerator
 
 
@@ -25,10 +26,15 @@ class HomeFragment : Fragment() {
     private lateinit var listPlayerAdapter: ListPlayerAdapter
     private lateinit var gridPlayerAdapter: GridPlayerAdapter
 
+    private lateinit var players: List<Player>
+
     private var isList: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
+
+        players = PlayerGenerator.getAllPlayer()
+
         super.onCreate(savedInstanceState)
     }
 
@@ -50,8 +56,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupUI() {
-        rvPlayers = view?.findViewById(R.id.rv_list_player)!!
-        edtSearchPlayer = view?.findViewById(R.id.edt_search_player)!!
+        rvPlayers = view?.findViewById(R.id.rv_list_player_home)!!
+        edtSearchPlayer = view?.findViewById(R.id.edt_search_player_home)!!
 
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment))
         val navHostFragment = NavHostFragment.findNavController(this)
@@ -59,7 +65,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerview() {
-        val players = PlayerGenerator.getAllPlayer()
         listPlayerAdapter = ListPlayerAdapter()
         listPlayerAdapter.setPlayers(players)
 
