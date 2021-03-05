@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RoundedDetailCard">
+        <item name="cornerFamily">rounded</item>
+
+        <item name="cornerSizeTopLeft">45dp</item>
+        <item name="cornerSizeBottomLeft">45dp</item>
+    </style>
+</resources>

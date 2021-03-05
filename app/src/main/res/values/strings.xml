@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ManUtd Profile</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorites</string>
+    <string name="about">About</string>
+    <string name="hi_dharma">Hi Dharma!</string>
+    <string name="welcome_to_manutd">Welcome to ManUtd</string>
+    <string name="this_is_image">This is image</string>
+    <string name="find_your_favorite_player_here">Find your favorite player here</string>
+    <string name="list">List</string>
+    <string name="grid">Grid</string>
+    <string name="detail_player">Detail Player</string>
+    <string name="join_date">Join date:</string>
+    <string name="birth_date">Birth date:</string>
+    <string name="biography">Biography</string>
+</resources>

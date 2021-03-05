@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RoundedGridImage">
+        <item name="cornerSizeBottomRight">75dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+
+        <item name="cornerSizeBottomLeft">15dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+    </style>
+</resources>
