@@ -81,13 +81,13 @@ class HomeFragment : Fragment() {
         edtSearchPlayer.editText?.doOnTextChanged { inputText, _, _, _ ->
             val allPlayers = PlayerGenerator.getAllPlayer()
 
-            val filteredPlayers = allPlayers.filter { player->
+            val filteredPlayers = allPlayers.filter { player ->
                 player.name.contains(inputText.toString(), ignoreCase = true)
             }
 
             if (isList) {
                 listPlayerAdapter.setPlayers(filteredPlayers)
-            }else {
+            } else {
                 gridPlayerAdapter.setPlayers(filteredPlayers)
             }
         }
@@ -104,7 +104,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setRecyclerviewMode(selectedMode: Int) {
-        when(selectedMode) {
+        when (selectedMode) {
             R.id.action_list -> {
                 isList = true
 
@@ -118,10 +118,17 @@ class HomeFragment : Fragment() {
                 isList = false
 
                 with(rvPlayers) {
-                    layoutManager = GridLayoutManager(view?.context, 3)
+                    rvPlayers.autoFitColumns(135)
                     adapter = gridPlayerAdapter
                 }
             }
         }
     }
+
+    private fun RecyclerView.autoFitColumns(columnWidth: Int) {
+        val displayMetrics = this.context.resources.displayMetrics
+        val noOfColumns = ((displayMetrics.widthPixels / displayMetrics.density) / columnWidth).toInt()
+        this.layoutManager = GridLayoutManager(this.context, noOfColumns)
+    }
+
 }
