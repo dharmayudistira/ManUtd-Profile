@@ -15,4 +15,6 @@
     <string name="my_name">Dharma Yudistira Eka Putra</string>
     <string name="my_email">A1311646@bangkit.academy</string>
     <string name="my_summary">Currently I am a 3 rd year Computer Science at State Polytechnic of Malang I have developed excellent problem solving skill through my degree, and I implement this skill through my competency in the field of android development My determination and dedication is highlighted by my achievements in competitions and national education programs I love writing code in Kotlin and Java programming languages and quite experienced using SCRUM in my project management With 3 years experience in the field of android development I am now looking to further develop and use my skills in a industry placement, specifically as an Android Developer</string>
+    <string name="share">Share</string>
+    <string name="share_message">Hey, here is my favorite manchester united: </string>
 </resources>

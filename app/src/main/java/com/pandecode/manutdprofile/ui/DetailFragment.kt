@@ -1,9 +1,8 @@
 package com.pandecode.manutdprofile.ui
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -29,7 +28,16 @@ class DetailFragment : Fragment() {
     private lateinit var tvBirthDate: TextView
     private lateinit var tvBiography: TextView
 
+    private lateinit var selectedPlayer: Player
+
     private val args: DetailFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+        selectedPlayer = args.selectedPlayer
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +49,6 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val selectedPlayer = args.selectedPlayer
 
         setupUI()
         populateUI(selectedPlayer)
@@ -104,5 +110,26 @@ class DetailFragment : Fragment() {
             }
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.share_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (item.itemId == R.id.action_share) {
+            val shareIntent = Intent().apply {
+                this.action = Intent.ACTION_SEND
+                this.putExtra(Intent.EXTRA_TEXT, "${activity?.resources?.getString(R.string.share_message)} ${selectedPlayer.name}")
+                this.type = "text/plain"
+            }
+
+            startActivity(shareIntent)
+        }else {
+            return super.onOptionsItemSelected(item)
+        }
+        return true
     }
 }
