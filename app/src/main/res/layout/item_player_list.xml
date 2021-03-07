@@ -65,7 +65,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="30"
-                app:drawableStartCompat="@drawable/ic_fotball_uniform" />
+                app:drawableStartCompat="@drawable/ic_football_uniform" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
