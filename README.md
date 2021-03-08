@@ -20,5 +20,5 @@
 
 |<img src=assets_readme/detail_screen_gif.gif align="center" height="400" width="200" ></a> |<img src=assets_readme/share_button.jpeg  align="center" height="400" width="200" ></a>|
 |:-----------:|:--------:|
-| Splash Screen | Home - List |
+| Detail Screen | Share |
 
